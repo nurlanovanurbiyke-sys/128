@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>localStorage</title>
+</head>
+<body>
+
+  <input type="text" id="nameInput" placeholder="Введите имя">
+  <button id="saveBtn">Сохранить</button>
+
+  <p id="result"></p>
+
+  <script>
+    const input = document.getElementById("nameInput");
+    const button = document.getElementById("saveBtn");
+    const result = document.getElementById("result");
+
+    // Проверяем, есть ли имя в localStorage после обновления страницы
+    const savedName = localStorage.getItem("userName");
+
+    if (savedName) {
+      result.textContent = `Привет, ${savedName}!`;
+      input.value = savedName;
+    }
+
+    button.addEventListener("click", () => {
+      const name = input.value;
+
+      localStorage.setItem("userName", name);
+
+      result.textContent = `Привет, ${name}!`;
+    });
+  </script>
+
+</body>
+</html>
